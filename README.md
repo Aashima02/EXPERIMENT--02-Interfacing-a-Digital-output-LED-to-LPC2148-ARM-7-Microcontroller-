@@ -1,9 +1,14 @@
 # EXPERIMENT--02-Interfacing-a-Digital-output-LED-to-LPC2148-ARM-7-Microcontroller-
 ## Interfacing a Digital output (LED) to LPC2148 ARM 7 Microcontroller 
 
-## Aim: To Interface a Digital output (LED) to LPC2148 ARM 7 and write a blink code 
-## Components required: Proteus ISIS professional suite, Kiel μ vision 5 Development environment 
-## Theory 
+## AIM: 
+
+To Interface a Digital output (LED) to LPC2148 ARM 7 and write a blink code 
+## COMPONENT'S REQUIRED: 
+
+Proteus ISIS professional suite, Kiel μ vision 5 Development environment 
+## THEORY
+
 The full form of an ARM is an advanced reduced instruction set computer (RISC) machine, and it is a 32-bit processor architecture expanded by ARM holdings. The applications of an ARM processor include several microcontrollers as well as processors. The architecture of an ARM processor was licensed by many corporations for designing ARM processor-based SoC products and CPUs. This allows the corporations to manufacture their products using ARM architecture. Likewise, all main semiconductor companies will make ARM-based SOCs such as Samsung, Atmel, TI etc.
 
 What is an ARM7 Processor?
@@ -113,11 +118,44 @@ Figure -11 Hex file for simulation
 Step 9: Select the hex file from the Kiel program folder and import the program in to the microcontroller as shown in figure 11 ,  debug and if no errors in connections are found, run the VSM simulation to view the output.
 
 
-## Kiel - Program for LED blinking ON  and  OFF (blinking)
+## KIEL - PROGRAM FOR LED BLINKING ON AND OFF (BLINKING):
+```
+#include <lpc214x.h>
+void delay_ms(unsigned int count)
+{
+  unsigned int j=0,i=0;
+  for(j=0;j<count;j++)
+  {
+    for(i=0;i<3000;i++);
+  }
+}
+int main() 
+{
+    PINSEL2 = 0x000000;  
+    IO1DIR = 0xffffffff; 
+    while(1)
+    {
+       IO1SET = 0xffffffff;     
+         delay_ms(1000);
+       IO1CLR = 0xffffffff;   
+         delay_ms(1000);
+    }
+}
+```
 
-## Output screen shots :
- 
-## Result :
+## OUTPUT SCREEN SHOTS :
+### LED OFF:
+![LEDOFF](https://user-images.githubusercontent.com/93427086/192111571-7bc854ad-6ac6-45ce-9c38-466621099e92.png)
+
+
+### LED ON:
+![LEDON](https://user-images.githubusercontent.com/93427086/192111576-daad4408-ccad-4d0b-8bff-acf80f7f886c.png)
+
+
+### CIRCUIT DIAGRAM:
+![circuit](https://user-images.githubusercontent.com/93427086/192111585-17a51019-9bcf-4daa-95bc-d14c194bbb80.png)
+
+## RESULT:
 Interfacing a digital output with ARM microcontroller is executed 
 
 
